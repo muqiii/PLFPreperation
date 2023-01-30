@@ -13,6 +13,12 @@
         <element id="directory" name="classes">
           <element id="module-output" name="PLFPreperation" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.14.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.14.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.14.0" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/PLFPreperation-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
