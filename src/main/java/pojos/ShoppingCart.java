@@ -1,14 +1,21 @@
 package pojos;
 import lombok.Data;
+
+import java.util.HashMap;
 import java.util.Map;
 
 @Data
 public class ShoppingCart {
     private Map<Product,Integer> shoppingcart;
 
+    public ShoppingCart(){
+        shoppingcart = new HashMap<>();
+    }
+
+
     public void addProduct(Product product) {
-        if(shoppingcart.keySet().contains(product)){
-            int number = shoppingcart.get(product).intValue();
+        if(shoppingcart.containsKey(product)){
+            int number = shoppingcart.get(product);
             shoppingcart.put(product,number+1);
         }
         else{
@@ -17,8 +24,8 @@ public class ShoppingCart {
     }
 
     public void removeProduct(Product product){
-        if(shoppingcart.keySet().contains(product) && shoppingcart.get(product).intValue() > 1){
-            int number = shoppingcart.get(product).intValue();
+        if(shoppingcart.containsKey(product) && shoppingcart.get(product) > 1){
+            int number = shoppingcart.get(product);
             shoppingcart.put(product,number-1);
         }
         else{

@@ -2,11 +2,16 @@ package db;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.ws.rs.NotFoundException;
+import lombok.Data;
+import pojos.Product;
 import pojos.ProductM;
 
 import java.io.IOException;
 import java.util.List;
 
+
+@Data
 public class ProductDB {
     private static ProductDB theInstance;
     private ProductM product;
@@ -34,5 +39,9 @@ public class ProductDB {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Product getProductById(int id) {
+        return product.getProducts().stream().filter(p -> p.getId() == id).findFirst().orElseThrow(() -> new NotFoundException());
     }
 }
