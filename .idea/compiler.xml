@@ -14,4 +14,8 @@
       <module name="PLFPreperation" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="TypeScriptCompiler">
+    <option name="recompileOnChanges" value="true" />
+    <option name="typeScriptCompilerParams" value="target --es6" />
+  </component>
 </project>

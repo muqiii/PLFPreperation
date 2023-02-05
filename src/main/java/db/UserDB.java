@@ -19,8 +19,8 @@ public class UserDB {
     }
 
     private UserDB(){
-        users.put("user1Mail.com", "pass1");
-        users.put("User2Mail.com", "pass2");
+        users.put("user1@Mail.com", "pass1");
+        users.put("user2@Mail.com", "pass2");
     }
 
     public String getPassword(String mail){

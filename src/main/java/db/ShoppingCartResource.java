@@ -6,38 +6,38 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jwt.JWTNeeded;
 import pojos.Product;
+import pojos.ShoppingCart;
 
+import javax.management.openmbean.KeyAlreadyExistsException;
 import java.io.IOException;
 
 
 @Path("/shoppingcart")
 public class ShoppingCartResource {
-
    @Context
    public ContainerRequestContext context;
 
    @POST
-   @Consumes
+   @Consumes("application/json")
    @JWTNeeded
    public Response createShoppingCart(){
       String mail = context.getProperty("mail").toString();
-      ShoppingCartDB.getTheInstance().createShoppingCart(mail);
+      try{
+         ShoppingCartDB.getTheInstance().createShoppingCart(mail);
+      } catch (KeyAlreadyExistsException | IOException exception) {
+         return Response.status(Response.Status.CONFLICT).build();
+      }
       return Response.ok(ShoppingCartDB.getTheInstance().getShoppingCart(mail)).build();
    }
 
    @GET
-   @Produces
+   @Produces("application/json")
    @JWTNeeded
-   public Response getShoppingCart(){
-      try {
-         String mail = context.getProperty("mail").toString();
+   public ShoppingCart getShoppingCart(){
+      String mail = context.getProperty("mail").toString();
 
-         return Response.ok(ShoppingCartDB.getTheInstance().getShoppingCart(mail)).build();
-      }catch (Exception e){
-         return Response.status(Response.Status.NOT_FOUND).build();
-      }
+      return ShoppingCartDB.getTheInstance().getShoppingCart(mail);
    }
-
 
    @PATCH
    @JWTNeeded
@@ -51,5 +51,4 @@ public class ShoppingCartResource {
 
       return Response.ok(ShoppingCartDB.getTheInstance().getShoppingCart(mail)).build();
    }
-
 }

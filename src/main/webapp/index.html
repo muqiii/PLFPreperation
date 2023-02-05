@@ -4,28 +4,67 @@
     <meta charset="UTF-8">
     <title>Product Online Shop - Application</title>
     <script src="ts.js"></script>
+
+    <style>
+        table-container{
+            display: flex;
+        }
+    </style>
 </head>
 <body onload="getAllData()">
-<div class="resultDiv">
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>TITLE</th>
-            <th>DESC</th>
-            <th>PRICE</th>
-            <th>discount%</th>
-            <th>RATING</th>
-            <th>STOCK</th>
-            <th>BRAND</th>
-            <th>CATEGORY</th>
-            <th>THUMBNAIL</th>
-            <th>IMAGES</th>
-        </tr>
-        </thead>
-        <tbody id="ResultBody">
-        </tbody>
-    </table>
+
+<form>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <div>
+        <button id="login-button" onclick="handleSubmit(event)">Login</button>
+    </div>
+</form>
+
+<div class="table-container">
+    <h1>All Products</h1>
+    <div style="
+    float: left;
+    width: 50%;">
+        <table >
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+                <th>addProduct</th>
+            </tr>
+            </thead>
+            <tbody id="allProductsBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1>ShoppingCart</h1>
+        <table style="
+    float: right;
+    width: 50%;">
+            <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>PRICE</th>
+            </tr>
+            </thead>
+            <tbody id="shoppingCartBody">
+            </tbody>
+        </table>
+    </div>
+
 </div>
+
 </body>
 </html>
